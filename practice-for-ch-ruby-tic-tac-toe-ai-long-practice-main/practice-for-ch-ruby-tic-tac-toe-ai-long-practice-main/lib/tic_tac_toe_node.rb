@@ -10,6 +10,7 @@ class TicTacToeNode
   end
 
   def losing_node?(evaluator)
+    
   end
 
   def winning_node?(evaluator)
@@ -20,11 +21,16 @@ class TicTacToeNode
   def children
     copy = @board.dup
     list = copy.open_positions
+    child_nodes = []
     
     list.each do |move|
       new_board = @board.dup
       new_board[move] = next_mover_mark
+      next_mark = new_board.next_mark
+      child = TicTacToeNode.new(new_board,next_mark,move)
+      child_nodes << child
     end
+    child_nodes
     
   end
 end
